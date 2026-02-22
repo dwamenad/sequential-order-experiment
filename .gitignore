@@ -1,0 +1,9 @@
+# OS / editor
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+
+# Generated analysis artifacts
+output/*
+!output/.gitkeep
