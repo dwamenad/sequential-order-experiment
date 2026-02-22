@@ -1,0 +1,21 @@
+option_id,option_label,quality_score,price_usd,is_default_candidate
+OPT01,Basic Dynamic Driver,58,69,0
+OPT02,Balanced Dynamic Driver,62,79,0
+OPT03,Wide-Stage Dynamic Driver,66,89,1
+OPT04,Hybrid Dynamic Driver,70,99,1
+OPT05,Reference Tuned Driver,74,109,1
+OPT06,High-Resolution Driver,78,129,1
+OPT07,Studio Tuning Package,82,149,0
+OPT08,Adaptive ANC Lite,64,89,0
+OPT09,Adaptive ANC Plus,72,119,1
+OPT10,Adaptive ANC Pro,80,159,1
+OPT11,Battery 20h Module,60,79,0
+OPT12,Battery 30h Module,68,99,1
+OPT13,Battery 40h Module,76,129,1
+OPT14,Premium Earcup Foam,67,89,0
+OPT15,Cooling Gel Earcups,73,109,1
+OPT16,Ultra-Light Headband,71,99,1
+OPT17,Fold Flat Hinge,69,95,0
+OPT18,Compact Fold Hinge,75,119,1
+OPT19,Wired + Bluetooth Combo,74,119,1
+OPT20,Travel Case Bundle,70,105,1

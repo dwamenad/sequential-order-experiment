@@ -1,0 +1,28 @@
+Linear mixed model fit by REML ['lmerMod']
+Formula: log_rt ~ order_condition * stage + (1 | participant_id)
+   Data: long_dat
+
+REML criterion at convergence: 519.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.2413 -0.6380 -0.0105  0.6310  3.4327 
+
+Random effects:
+ Groups         Name        Variance Std.Dev.
+ participant_id (Intercept) 0.002345 0.04842 
+ Residual                   0.125031 0.35360 
+Number of obs: 640, groups:  participant_id, 80
+
+Fixed effects:
+                                     Estimate Std. Error t value
+(Intercept)                          7.748656   0.044795 172.981
+order_conditionlarge_to_small       -0.042781   0.062572  -0.684
+stage                               -0.073464   0.008737  -8.409
+order_conditionlarge_to_small:stage  0.004750   0.012204   0.389
+
+Correlation of Fixed Effects:
+            (Intr) ord___ stage 
+ordr_cndt__ -0.716              
+stage       -0.878  0.628       
+ordr_cnd__:  0.628 -0.878 -0.716

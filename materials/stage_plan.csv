@@ -1,0 +1,9 @@
+stage,attribute_name,choice_set_large_to_small,choice_set_small_to_large,default_option_rule
+1,Sound Profile,12,4,mid_tier
+2,Noise Cancellation,10,5,mid_tier
+3,Battery Life,9,6,mid_tier
+4,Earcup Material,8,7,mid_tier
+5,Weight,7,8,mid_tier
+6,Foldability,6,9,mid_tier
+7,Cable/Connectivity,5,10,mid_tier
+8,Case/Accessories,4,12,mid_tier
