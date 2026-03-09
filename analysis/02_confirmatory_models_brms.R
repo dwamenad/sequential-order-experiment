@@ -26,9 +26,12 @@ dat <- read_csv(input_path, show_col_types = FALSE) |>
   filter(!is.na(outcome), !is.na(stage), !is.na(order_condition))
 
 priors <- c(
-  prior(normal(0, 1.5), class = "b"),
-  prior(student_t(3, 0, 2.5), class = "Intercept"),
-  prior(exponential(1), class = "sd")
+  set_prior("normal(0, 1.5)", class = "b", dpar = "muAI"),
+  set_prior("normal(0, 1.5)", class = "b", dpar = "muExpert"),
+  set_prior("student_t(3, 0, 2.5)", class = "Intercept", dpar = "muAI"),
+  set_prior("student_t(3, 0, 2.5)", class = "Intercept", dpar = "muExpert"),
+  set_prior("exponential(1)", class = "sd", dpar = "muAI", group = "participant_id"),
+  set_prior("exponential(1)", class = "sd", dpar = "muExpert", group = "participant_id")
 )
 
 fit <- brm(
@@ -73,7 +76,7 @@ h_h4 <- hypothesis(fit, "muExpert_stage - muAI_stage < 0")
 # Optional: whether shrinkage differs by order condition.
 h_h4_order_diff <- hypothesis(
   fit,
-  "(muExpert_order_conditionlarge_to_small:stage - muAI_order_conditionlarge_to_small:stage) != 0"
+  "muExpert_order_conditionlarge_to_small:stage - muAI_order_conditionlarge_to_small:stage = 0"
 )
 
 writeLines(capture.output(print(summary(fit))), file.path(out_dir, "model_summary.txt"))
@@ -91,13 +94,22 @@ newdat <- tidyr::expand_grid(
   stage = 1:8
 )
 
-pp <- fitted(fit, newdata = newdat, summary = TRUE, scale = "response")
+ep <- posterior_epred(
+  fit,
+  newdata = newdat,
+  re_formula = NA
+)
+
+# ep dims: draws x observations x categories
+ep_mean <- apply(ep, c(2, 3), mean)
+ep_l95 <- apply(ep, c(2, 3), quantile, probs = 0.025)
+ep_u95 <- apply(ep, c(2, 3), quantile, probs = 0.975)
 
 pred_tbl <- bind_cols(
   newdat,
-  as_tibble(pp[, , "Estimate"], .name_repair = "minimal") |> setNames(c("p_Neither", "p_AI", "p_Expert")),
-  as_tibble(pp[, , "Q2.5"], .name_repair = "minimal") |> setNames(c("p_Neither_l95", "p_AI_l95", "p_Expert_l95")),
-  as_tibble(pp[, , "Q97.5"], .name_repair = "minimal") |> setNames(c("p_Neither_u95", "p_AI_u95", "p_Expert_u95"))
+  as_tibble(ep_mean, .name_repair = "minimal") |> setNames(c("p_Neither", "p_AI", "p_Expert")),
+  as_tibble(ep_l95, .name_repair = "minimal") |> setNames(c("p_Neither_l95", "p_AI_l95", "p_Expert_l95")),
+  as_tibble(ep_u95, .name_repair = "minimal") |> setNames(c("p_Neither_u95", "p_AI_u95", "p_Expert_u95"))
 )
 
 write_csv(pred_tbl, file.path(out_dir, "predicted_probabilities_by_stage_order.csv"))

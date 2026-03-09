@@ -1,0 +1,222 @@
+[[AdvancedFormat]]
+
+[[Block:Consent]]
+
+[[Question:MC:SingleAnswer]]
+Consent: I am 18+ and agree to participate in this study.
+[[Choices]]
+I agree
+I do not agree
+
+[[Block:Eligibility and Instructions]]
+
+[[Question:MC:SingleAnswer]]
+Are you currently using a desktop or laptop computer?
+[[Choices]]
+Yes
+No
+
+[[Question:MC:SingleAnswer]]
+Instructions: You will complete 8 product-configuration decisions. On each stage, one option is labeled AI Suggested and one is labeled Expert Recommended. Choose one option per stage.
+[[Choices]]
+I understand
+
+[[Block:Decision Task Stages]]
+
+[[Question:MC:SingleAnswer]]
+Stage 1: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 2: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 3: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 4: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 5: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 6: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 7: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Question:MC:SingleAnswer]]
+Stage 8: Select one option.
+[[Choices]]
+AI Suggested: Option A
+Expert Recommended: Option B
+Option C
+Option D
+Option E
+Option F
+
+[[Block:Checks]]
+
+[[Question:MC:SingleAnswer]]
+Attention check: please choose option 2 for this question.
+[[Choices]]
+Option 1
+Option 2
+Option 3
+
+[[Question:MC:SingleAnswer]]
+Attention check: please choose option 1 for this question.
+[[Choices]]
+Option 1
+Option 2
+Option 3
+
+[[Question:MC:SingleAnswer]]
+Comprehension: Which labels appeared during the decision stages?
+[[Choices]]
+AI Suggested and Expert Recommended
+Price and Quality Only
+No labels appeared
+
+[[Block:Post-task Measures]]
+
+[[Question:MC:SingleAnswer]]
+How satisfied are you with your final set of choices?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very
+
+[[Question:MC:SingleAnswer]]
+How confident are you that you made good choices?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very
+
+[[Question:MC:SingleAnswer]]
+How much do you trust AI suggestions in this task?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very
+
+[[Question:MC:SingleAnswer]]
+How much do you trust expert recommendations in this task?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very
+
+[[Question:MC:SingleAnswer]]
+How much did advice labels influence your choices?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very
+
+[[Question:MC:SingleAnswer]]
+How familiar are you with AI recommendation tools?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very
+
+[[Block:Demographics]]
+
+[[Question:TE]]
+What is your age?
+
+[[Question:TE]]
+What is your 5-digit ZIP code? (used only for area-level socioeconomic measures)
+
+[[Question:MC:SingleAnswer]]
+Gender
+[[Choices]]
+Woman
+Man
+Non-binary
+Prefer not to say
+
+[[Question:MC:SingleAnswer]]
+In general, how much do you trust technology-based recommendations?
+[[Choices]]
+1 - Not at all
+2
+3
+4
+5
+6
+7 - Very

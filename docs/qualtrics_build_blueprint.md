@@ -80,6 +80,7 @@ Decision item variable names must be:
 
 Survey-level fields:
 - `order_condition`
+- `zip_code`
 - `attention_1_pass`
 - `attention_2_pass`
 - `comprehension_pass`
@@ -97,6 +98,7 @@ Survey-level fields:
 2. Add one comprehension item about cue meaning.
 3. Desktop-only eligibility filter.
 4. Prevent back button edits during sequential stages.
+5. Add ZIP input validation: exactly 5 digits (`^[0-9]{5}$`).
 
 ## 7) Export Settings
 

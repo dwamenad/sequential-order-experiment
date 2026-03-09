@@ -1,0 +1,794 @@
+{
+  "SurveyEntry": {
+    "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+    "SurveyName": "Sequential Order Experiment Template",
+    "SurveyDescription": "Template for Large->Small vs Small->Large customization experiment.",
+    "SurveyOwnerID": "UR_TEMPLATE",
+    "SurveyBrandID": "BW_TEMPLATE",
+    "DivisionID": null,
+    "SurveyLanguage": "EN",
+    "SurveyActiveResponseSet": "RS_TEMPLATE",
+    "SurveyStatus": "Active",
+    "LastModified": "2026-02-23 00:00:00",
+    "CreatedDate": "2026-02-23 00:00:00"
+  },
+  "SurveyElements": [
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SO",
+      "PrimaryAttribute": "Survey Options",
+      "SecondaryAttribute": null,
+      "TertiaryAttribute": null,
+      "Payload": {
+        "SurveyName": "Sequential Order Experiment Template",
+        "BackButton": "false",
+        "SaveAndContinue": "true",
+        "SurveyProtection": "PublicSurvey",
+        "BallotBoxStuffingPrevention": "false",
+        "NoIndex": "Yes",
+        "SecureResponseFiles": "true",
+        "SurveyExpiration": "None",
+        "PartialData": "+1 week",
+        "ValidationMessage": "Please answer this question.",
+        "EOSMessage": "Thank you for completing the study.",
+        "AnonymizeResponse": "false",
+        "RefererCheck": "No"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "BL",
+      "PrimaryAttribute": "Survey Blocks",
+      "SecondaryAttribute": null,
+      "TertiaryAttribute": null,
+      "Payload": [
+        {
+          "Type": "Default",
+          "Description": "Consent",
+          "ID": "BL_CONSENT",
+          "BlockElements": [
+            { "Type": "Question", "QuestionID": "QID1" }
+          ]
+        },
+        {
+          "Type": "Standard",
+          "Description": "Eligibility and Instructions",
+          "ID": "BL_INTRO",
+          "BlockElements": [
+            { "Type": "Question", "QuestionID": "QID2" },
+            { "Type": "Question", "QuestionID": "QID3" }
+          ]
+        },
+        {
+          "Type": "Standard",
+          "Description": "Decision Task Stages",
+          "ID": "BL_TASK",
+          "BlockElements": [
+            { "Type": "Question", "QuestionID": "QID4" },
+            { "Type": "Question", "QuestionID": "QID5" },
+            { "Type": "Question", "QuestionID": "QID6" },
+            { "Type": "Question", "QuestionID": "QID7" },
+            { "Type": "Question", "QuestionID": "QID8" },
+            { "Type": "Question", "QuestionID": "QID9" },
+            { "Type": "Question", "QuestionID": "QID10" },
+            { "Type": "Question", "QuestionID": "QID11" }
+          ]
+        },
+        {
+          "Type": "Standard",
+          "Description": "Checks",
+          "ID": "BL_CHECKS",
+          "BlockElements": [
+            { "Type": "Question", "QuestionID": "QID12" },
+            { "Type": "Question", "QuestionID": "QID13" },
+            { "Type": "Question", "QuestionID": "QID14" }
+          ]
+        },
+        {
+          "Type": "Standard",
+          "Description": "Post-task Measures",
+          "ID": "BL_POST",
+          "BlockElements": [
+            { "Type": "Question", "QuestionID": "QID15" },
+            { "Type": "Question", "QuestionID": "QID16" },
+            { "Type": "Question", "QuestionID": "QID17" },
+            { "Type": "Question", "QuestionID": "QID18" },
+            { "Type": "Question", "QuestionID": "QID19" },
+            { "Type": "Question", "QuestionID": "QID20" }
+          ]
+        },
+        {
+          "Type": "Standard",
+          "Description": "Demographics",
+          "ID": "BL_DEMO",
+          "BlockElements": [
+            { "Type": "Question", "QuestionID": "QID21" },
+            { "Type": "Question", "QuestionID": "QID22" },
+            { "Type": "Question", "QuestionID": "QID23" }
+          ]
+        }
+      ]
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "FL",
+      "PrimaryAttribute": "Survey Flow",
+      "SecondaryAttribute": null,
+      "TertiaryAttribute": null,
+      "Payload": {
+        "Flow": [
+          {
+            "Type": "EmbeddedData",
+            "FlowID": "FL_ED_INIT",
+            "EmbeddedData": [
+              { "Field": "order_condition", "Value": "" },
+              { "Field": "counterbalance_version", "Value": "A" }
+            ]
+          },
+          {
+            "Type": "Block",
+            "ID": "BL_CONSENT",
+            "FlowID": "FL_1"
+          },
+          {
+            "Type": "Block",
+            "ID": "BL_INTRO",
+            "FlowID": "FL_2"
+          },
+          {
+            "Type": "Randomizer",
+            "FlowID": "FL_RANDOMIZER",
+            "EvenPresentation": true,
+            "SubSet": 1,
+            "Flow": [
+              {
+                "Type": "EmbeddedData",
+                "FlowID": "FL_ED_L2S",
+                "EmbeddedData": [
+                  { "Field": "order_condition", "Value": "large_to_small" }
+                ]
+              },
+              {
+                "Type": "EmbeddedData",
+                "FlowID": "FL_ED_S2L",
+                "EmbeddedData": [
+                  { "Field": "order_condition", "Value": "small_to_large" }
+                ]
+              }
+            ]
+          },
+          {
+            "Type": "Block",
+            "ID": "BL_TASK",
+            "FlowID": "FL_3"
+          },
+          {
+            "Type": "Block",
+            "ID": "BL_CHECKS",
+            "FlowID": "FL_4"
+          },
+          {
+            "Type": "Block",
+            "ID": "BL_POST",
+            "FlowID": "FL_5"
+          },
+          {
+            "Type": "Block",
+            "ID": "BL_DEMO",
+            "FlowID": "FL_6"
+          }
+        ],
+        "Properties": { "Count": 7 }
+      }
+    },
+
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID1",
+      "SecondaryAttribute": "Consent",
+      "TertiaryAttribute": null,
+      "Payload": {
+        "QuestionText": "Consent: I am 18+ and agree to participate in this study.",
+        "DataExportTag": "consent",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "QuestionDescription": "",
+        "Choices": {
+          "1": { "Display": "I agree" },
+          "2": { "Display": "I do not agree" }
+        },
+        "ChoiceOrder": ["1", "2"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 3,
+        "NextAnswerId": 1,
+        "QuestionID": "QID1"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID2",
+      "SecondaryAttribute": "Eligibility",
+      "Payload": {
+        "QuestionText": "Are you currently using a desktop or laptop computer?",
+        "DataExportTag": "elig_desktop",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "QuestionDescription": "",
+        "Choices": { "1": { "Display": "Yes" }, "2": { "Display": "No" } },
+        "ChoiceOrder": ["1", "2"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 3,
+        "NextAnswerId": 1,
+        "QuestionID": "QID2"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID3",
+      "SecondaryAttribute": "Instructions",
+      "Payload": {
+        "QuestionText": "Instructions: You will complete 8 product-configuration decisions. On each stage, one option is labeled AI Suggested and one is labeled Expert Recommended. Choose one option per stage.",
+        "DataExportTag": "instructions_ack",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "QuestionDescription": "",
+        "Choices": { "1": { "Display": "I understand" } },
+        "ChoiceOrder": ["1"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 2,
+        "NextAnswerId": 1,
+        "QuestionID": "QID3"
+      }
+    },
+
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID4",
+      "SecondaryAttribute": "Stage 1",
+      "Payload": {
+        "QuestionText": "Stage 1: Select one option.",
+        "DataExportTag": "q_stage1_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "QuestionDescription": "",
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID4"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID5",
+      "SecondaryAttribute": "Stage 2",
+      "Payload": {
+        "QuestionText": "Stage 2: Select one option.",
+        "DataExportTag": "q_stage2_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID5"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID6",
+      "SecondaryAttribute": "Stage 3",
+      "Payload": {
+        "QuestionText": "Stage 3: Select one option.",
+        "DataExportTag": "q_stage3_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID6"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID7",
+      "SecondaryAttribute": "Stage 4",
+      "Payload": {
+        "QuestionText": "Stage 4: Select one option.",
+        "DataExportTag": "q_stage4_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID7"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID8",
+      "SecondaryAttribute": "Stage 5",
+      "Payload": {
+        "QuestionText": "Stage 5: Select one option.",
+        "DataExportTag": "q_stage5_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID8"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID9",
+      "SecondaryAttribute": "Stage 6",
+      "Payload": {
+        "QuestionText": "Stage 6: Select one option.",
+        "DataExportTag": "q_stage6_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID9"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID10",
+      "SecondaryAttribute": "Stage 7",
+      "Payload": {
+        "QuestionText": "Stage 7: Select one option.",
+        "DataExportTag": "q_stage7_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID10"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID11",
+      "SecondaryAttribute": "Stage 8",
+      "Payload": {
+        "QuestionText": "Stage 8: Select one option.",
+        "DataExportTag": "q_stage8_choice",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Configuration": { "QuestionDescriptionOption": "UseText" },
+        "Choices": {
+          "1": { "Display": "AI Suggested: Option A" },
+          "2": { "Display": "Expert Recommended: Option B" },
+          "3": { "Display": "Option C" },
+          "4": { "Display": "Option D" },
+          "5": { "Display": "Option E" },
+          "6": { "Display": "Option F" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 7,
+        "NextAnswerId": 1,
+        "QuestionID": "QID11"
+      }
+    },
+
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID12",
+      "SecondaryAttribute": "Attention Check 1",
+      "Payload": {
+        "QuestionText": "Attention check: please choose option 2 for this question.",
+        "DataExportTag": "attention_1",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "Option 1" },
+          "2": { "Display": "Option 2" },
+          "3": { "Display": "Option 3" }
+        },
+        "ChoiceOrder": ["1", "2", "3"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 4,
+        "NextAnswerId": 1,
+        "QuestionID": "QID12"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID13",
+      "SecondaryAttribute": "Attention Check 2",
+      "Payload": {
+        "QuestionText": "Attention check: please choose option 1 for this question.",
+        "DataExportTag": "attention_2",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "Option 1" },
+          "2": { "Display": "Option 2" },
+          "3": { "Display": "Option 3" }
+        },
+        "ChoiceOrder": ["1", "2", "3"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 4,
+        "NextAnswerId": 1,
+        "QuestionID": "QID13"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID14",
+      "SecondaryAttribute": "Comprehension Check",
+      "Payload": {
+        "QuestionText": "Comprehension: Which labels appeared during the decision stages?",
+        "DataExportTag": "comprehension",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "AI Suggested and Expert Recommended" },
+          "2": { "Display": "Price and Quality Only" },
+          "3": { "Display": "No labels appeared" }
+        },
+        "ChoiceOrder": ["1", "2", "3"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 4,
+        "NextAnswerId": 1,
+        "QuestionID": "QID14"
+      }
+    },
+
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID15",
+      "SecondaryAttribute": "Satisfaction",
+      "Payload": {
+        "QuestionText": "How satisfied are you with your final set of choices?",
+        "DataExportTag": "satisfaction",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID15"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID16",
+      "SecondaryAttribute": "Confidence",
+      "Payload": {
+        "QuestionText": "How confident are you that you made good choices?",
+        "DataExportTag": "confidence",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID16"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID17",
+      "SecondaryAttribute": "Trust AI",
+      "Payload": {
+        "QuestionText": "How much do you trust AI suggestions in this task?",
+        "DataExportTag": "trust_ai",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID17"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID18",
+      "SecondaryAttribute": "Trust Expert",
+      "Payload": {
+        "QuestionText": "How much do you trust expert recommendations in this task?",
+        "DataExportTag": "trust_expert",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID18"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID19",
+      "SecondaryAttribute": "Advice Influence",
+      "Payload": {
+        "QuestionText": "How much did advice labels influence your choices?",
+        "DataExportTag": "advice_influence",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID19"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID20",
+      "SecondaryAttribute": "AI Familiarity",
+      "Payload": {
+        "QuestionText": "How familiar are you with AI recommendation tools?",
+        "DataExportTag": "ai_familiarity",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID20"
+      }
+    },
+
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID21",
+      "SecondaryAttribute": "Age",
+      "Payload": {
+        "QuestionText": "What is your age?",
+        "DataExportTag": "age",
+        "QuestionType": "TE",
+        "Selector": "SL",
+        "SubSelector": "TX",
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "QuestionID": "QID21"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID22",
+      "SecondaryAttribute": "Gender",
+      "Payload": {
+        "QuestionText": "Gender",
+        "DataExportTag": "gender",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "Woman" },
+          "2": { "Display": "Man" },
+          "3": { "Display": "Non-binary" },
+          "4": { "Display": "Prefer not to say" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 5,
+        "NextAnswerId": 1,
+        "QuestionID": "QID22"
+      }
+    },
+    {
+      "SurveyID": "SV_SEQUENTIAL_ORDER_TEMPLATE",
+      "Element": "SQ",
+      "PrimaryAttribute": "QID23",
+      "SecondaryAttribute": "Tech Trust Baseline",
+      "Payload": {
+        "QuestionText": "In general, how much do you trust technology-based recommendations?",
+        "DataExportTag": "tech_trust_baseline",
+        "QuestionType": "MC",
+        "Selector": "SAVR",
+        "SubSelector": "TX",
+        "Choices": {
+          "1": { "Display": "1 - Not at all" },
+          "2": { "Display": "2" },
+          "3": { "Display": "3" },
+          "4": { "Display": "4" },
+          "5": { "Display": "5" },
+          "6": { "Display": "6" },
+          "7": { "Display": "7 - Very" }
+        },
+        "ChoiceOrder": ["1", "2", "3", "4", "5", "6", "7"],
+        "Validation": { "Settings": { "ForceResponse": "ON", "Type": "None" } },
+        "Language": [],
+        "NextChoiceId": 8,
+        "NextAnswerId": 1,
+        "QuestionID": "QID23"
+      }
+    }
+  ]
+}

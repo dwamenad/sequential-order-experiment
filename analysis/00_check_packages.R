@@ -2,7 +2,8 @@
 
 required <- c(
   "readr", "dplyr", "tidyr", "stringr", "janitor",
-  "lme4", "broom.mixed", "brms", "tibble"
+  "lme4", "broom.mixed", "brms", "tibble",
+  "jsonlite"
 )
 
 installed <- rownames(installed.packages())

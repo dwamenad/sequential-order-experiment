@@ -4,8 +4,10 @@ This folder contains a complete starter implementation for your preregistered st
 
 - `docs/osf_preregistration_final.md`: OSF-ready prereg text.
 - `docs/qualtrics_build_blueprint.md`: block-by-block Qualtrics build instructions.
+- `docs/qualtrics_api_setup.md`: connect Qualtrics API and pull responses directly.
 - `materials/stage_plan.csv`: stage sizes and order mapping for both conditions.
 - `materials/option_bank_headphones.csv`: reusable option pool (price/quality).
+- `analysis/04_qualtrics_api.R`: Qualtrics API helper (`whoami`, `export-responses`).
 - `analysis/01_prepare_qualtrics_data.R`: converts Qualtrics wide export to long panel data.
 - `analysis/02_confirmatory_models_brms.R`: primary multinomial mixed model + hypothesis tests.
 - `analysis/03_secondary_models.R`: preregistered secondary analyses.
@@ -14,7 +16,7 @@ This folder contains a complete starter implementation for your preregistered st
 ## Suggested Workflow
 
 1. Build survey in Qualtrics using `docs/qualtrics_build_blueprint.md`.
-2. Export a test CSV from Qualtrics into `data/raw/`.
+2. Export a test CSV from Qualtrics into `data/raw/` (or use `analysis/04_qualtrics_api.R export-responses`).
 3. Run `analysis/01_prepare_qualtrics_data.R`.
 4. Run `analysis/02_confirmatory_models_brms.R`.
 5. Run `analysis/03_secondary_models.R`.

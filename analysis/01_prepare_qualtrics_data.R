@@ -35,6 +35,12 @@ if (!"response_id" %in% names(raw)) {
   raw <- raw |> mutate(response_id = row_number() |> as.character())
 }
 
+# Try to detect a ZIP code column from Qualtrics export.
+zip_candidates <- names(raw)[
+  str_detect(names(raw), "(^zip$|^zip_code$|zipcode|postal|zip_code)")
+]
+zip_col <- if (length(zip_candidates) > 0) zip_candidates[[1]] else NA_character_
+
 stage_range <- 1:8
 
 choice_cols <- sprintf("q_stage%d_choice", stage_range)
@@ -51,12 +57,16 @@ present <- function(x) x[x %in% names(raw)]
 base <- raw |>
   mutate(
     participant_id = response_id,
-    order_condition = as.character(order_condition)
+    order_condition = as.character(order_condition),
+    zip_code_raw = if (!is.na(zip_col)) as.character(.data[[zip_col]]) else NA_character_,
+    zip_code = str_extract(zip_code_raw, "\\b\\d{5}\\b"),
+    zip3 = if_else(!is.na(zip_code), str_sub(zip_code, 1, 3), NA_character_)
   ) |>
   select(any_of(c(
     "participant_id", "order_condition", "attention_1_pass", "attention_2_pass",
     "comprehension_pass", "satisfaction", "confidence", "trust_ai", "trust_expert",
-    "advice_influence", "tech_trust_baseline", "ai_familiarity"
+    "advice_influence", "tech_trust_baseline", "ai_familiarity",
+    "zip_code", "zip3"
   )))
 
 choices_choice <- raw |>
@@ -105,10 +115,14 @@ long <- choices_long |>
   rename(participant_id = response_id) |>
   mutate(
     stage = as.integer(stage),
+    choice = as.character(choice),
     rt_ms = suppressWarnings(as.numeric(rt_ms)),
     choice_set_size = suppressWarnings(as.numeric(choice_set_size)),
     selected_price = suppressWarnings(as.numeric(selected_price)),
     selected_quality = suppressWarnings(as.numeric(selected_quality)),
+    ai_option_id = if_else(is.na(ai_option_id), "1", ai_option_id),
+    expert_option_id = if_else(is.na(expert_option_id), "2", expert_option_id),
+    default_option_id = if_else(is.na(default_option_id), "3", default_option_id),
     outcome = case_when(
       !is.na(choice) & !is.na(ai_option_id) & choice == ai_option_id ~ "AI",
       !is.na(choice) & !is.na(expert_option_id) & choice == expert_option_id ~ "Expert",
@@ -156,6 +170,8 @@ analysis_long <- long |>
 participant_summary <- analysis_long |>
   group_by(participant_id, order_condition) |>
   summarise(
+    zip_code = first(zip_code),
+    zip3 = first(zip3),
     total_price = sum(selected_price, na.rm = TRUE),
     mean_rt_ms = mean(rt_ms, na.rm = TRUE),
     ai_share = mean(outcome == "AI", na.rm = TRUE),
